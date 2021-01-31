@@ -26,5 +26,6 @@ jobs:
     - name: build docker
       run: |
         mv ~/.cargo/bin .
-        docker build
+        docker build .
+        
     
