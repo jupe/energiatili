@@ -17,8 +17,9 @@ jobs:
       run: |
         cargo install --path energiatili-import
         cargo install --path influxdb-export
-        ls -lr ~/.cargo
-        ~/.cargo/bin/energiatili-import || true
+        cp ~/.cargo/bin .
+    - name: build docker
+      run: docker build
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
