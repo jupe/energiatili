@@ -18,7 +18,7 @@ jobs:
         cargo install --path energiatili-import
         cargo install --path influxdb-export
         ls -lr ~/.cargo
-        ~/.cargo/bin/energiatili-export
+        ~/.cargo/bin/energiatili-import || true
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
