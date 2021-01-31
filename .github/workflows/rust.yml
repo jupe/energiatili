@@ -26,6 +26,8 @@ jobs:
     - name: build docker
       run: |
         mv ~/.cargo/bin .
-        docker build .
-        
-    
+        docker build -t energiatili .
+    - name: run docker
+      run: docker run --rm energiatili
+
+

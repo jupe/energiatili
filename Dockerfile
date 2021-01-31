@@ -11,6 +11,7 @@ RUN set -x \
     # - it needs libintl package
     # - only weights 100KB combined with it's libraries
     && apk add gettext libintl
+
 ENV PATH=/home/energiatili/:${PATH}
 
 COPY ./energiatili.tmpl .
