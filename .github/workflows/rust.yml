@@ -17,7 +17,7 @@ jobs:
       run: |
         cargo install --path energiatili-import
         cargo install --path influxdb-export
-        cp ~/.cargo/bin .
+        mv ~/.cargo/bin .
     - name: build docker
       run: docker build
     - name: Archive build
