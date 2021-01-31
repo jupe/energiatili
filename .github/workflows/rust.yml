@@ -17,17 +17,18 @@ jobs:
       run: |
         cargo install --path energiatili-import
         cargo install --path influxdb-export
-    - name: Archive build
-      uses: actions/upload-artifact@v2
-      with:
-        name: energiatili-linux.x86
-        path: |
-          ~/.cargo/bin/**
+  docker:
+    runs-on: ubuntu-latest
+    steps:
     - name: build docker
-      run: |
-        mv ~/.cargo/bin .
-        docker build -t energiatili .
+      run: docker build -t energiatili .
     - name: run docker
       run: docker run --rm energiatili
-
-
+    - name: Push to GitHub Packages
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: jupe/energiatili/energiatili
+        tag_with_ref: true

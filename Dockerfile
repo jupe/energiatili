@@ -1,7 +1,8 @@
-FROM alpine:3.7
+FROM rust:alpine3.12
 
-RUN mkdir /home/energiatili
-WORKDIR /home/energiatili
+#RUN set -e \
+#    && apt update \
+#    && apt install gettext
 
 RUN set -x \
     # This folder is in $PATH by default but isn't created by default
@@ -10,13 +11,15 @@ RUN set -x \
     # Install envsubst command for replacing config files in system startup
     # - it needs libintl package
     # - only weights 100KB combined with it's libraries
-    && apk add gettext libintl
+    && apk add --no-cache musl-dev gettext libintl openssl-dev
 
-ENV PATH=/home/energiatili/:${PATH}
+WORKDIR /root
+ENV PATH=/root/.cargo/bin:${PATH}
 
-COPY ./energiatili.tmpl .
-COPY ./bin/energiatili-import .
-COPY ./bin/influxdb-export .
-COPY ./entrypoint.sh .
+COPY . .
+
+RUN set -e \
+    && mkdir .config \
+    && cargo install --path energiatili-import && cargo install --path influxdb-export
 
 ENTRYPOINT ["entrypoint.sh"]

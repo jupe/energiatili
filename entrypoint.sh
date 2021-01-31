@@ -7,7 +7,8 @@ export ENERGIATILI_PASSWORD="password"
 export INFLUXDB_URL="http://localhost:8080"
 export INFLUXDB_DB="energiatili"
 echo "generating config file"
-envsubst < energiatili.tmpl > energiatili.config
+
+envsubst < energiatili.tmpl > .config/energiatili.config
 
 energiatili-import >> data.json
 echo data.json
