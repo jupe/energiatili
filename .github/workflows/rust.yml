@@ -10,11 +10,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: cargo build --verbose
+      run: cargo install --verbose
     - name: Run tests
-      run: |
-        cargo test --verbose
-        ls -lr
+      run: cargo test --verbose
+    - name: list files
+      run: ls -lr
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
