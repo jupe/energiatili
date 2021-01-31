@@ -21,6 +21,6 @@ jobs:
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
-        name: energiatili
+        name: energiatili-linux.x86
         path: |
           ~/.cargo/bin/**
