@@ -17,10 +17,10 @@ jobs:
       run: |
         cargo install --path energiatili-import
         cargo install --path influxdb-export
-        ls -lr
+        ls -lr ~/.cargo
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
         name: energiatili
         path: |
-          .cargo/bin/**
+          ~/.cargo/bin/**
