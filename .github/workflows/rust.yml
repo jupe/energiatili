@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: cargo build --release --verbose
+      run: cargo build --release --verbose --out-dir bin/ --all-targets
     - name: Run tests
       run: cargo test --verbose
     - name: list files
@@ -25,4 +25,6 @@ jobs:
       with:
         name: energiatili-linux.x86
         path: |
-          ~/.cargo/bin/**
+          bin/**
+#~/.cargo/bin/**
+          
