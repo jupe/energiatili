@@ -10,15 +10,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --release --verbose
     - name: Run tests
       run: cargo test --verbose
     - name: list files
       run: |
-        cargo install --path energiatili-import
-        cargo install --path influxdb-export
-        ls -lr ~/.cargo
-        ~/.cargo/bin/energiatili-import || true
+        la -lr |grep x
+        #cargo install --path energiatili-import
+        #cargo install --path influxdb-export
+        #ls -lr ~/.cargo
+        #~/.cargo/bin/energiatili-import || true
     - name: Archive build
       uses: actions/upload-artifact@v2
       with:
