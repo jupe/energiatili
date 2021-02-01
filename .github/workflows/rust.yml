@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: cargo build --release --verbose --out-dir bin/ --all-targets
+      run: cargo build --release --verbose --all-targets
     - name: Run tests
       run: cargo test --verbose
     - name: list files
