@@ -15,7 +15,7 @@ jobs:
       run: cargo test --verbose
     - name: list files
       run: |
-        la -lr |grep x
+        ls -lr |grep x
         #cargo install --path energiatili-import
         #cargo install --path influxdb-export
         #ls -lr ~/.cargo
